@@ -4,6 +4,22 @@
 ### Nasz projekt umożliwia aktualnie czytanie książek w wersji elektronicznej, plików, przeglądanie stron internetowych bez potrzeby użycia rąk, dzięki automatycznym sterowaniu ekranem za pomocą wzroku, który kierujemy zależnie, od potrzeby w dół bądź górę strony.
 ### W przyszłości pragnęlibyśmy stworzyć bardziej precyzyjny model, który byłby w stanie z większą precyzją określać punkt na ekranie na który kierujemy nasz wzrok, co pozwalałby na przeprowadzanie bardziej złożonych i skomplikowanych operacji, jak obsługa całego urządzenia. 
 ---
+## Schemat działania:  
+  - Wczytywanie danych z kalibracji
+  - Uczenie modeli za pomocą optymalnej sieci
+  - Pętla programu
+   + Przechwytywanie klatki z obrazu kamerki internetowej
+   + Analiza klatki przez odpowiedni skrypt i wyznaczenie wartości wejściowych sieci
+   + Wykorzystanie zwróconych punktów do sterowania myszką: 
+     - Przesuwanie kursora w segment ekranu odpowiadający punktowi, na który skierowany jest wzrok użytkownika
+     - Jeżeli segmentem oglądanym jest część górna/dolna ekranu wywoływane jest polecenie do scrollowania w górę/dół
+---
+## Projekt tworzony był w ramach międzynarodowego programu Intel AI for Youth, gdzie na gali zakończeniowej w Ministerstwie Rozwoju otrzymał pierwsze miejsce.
+![gala.jpg]
+
+Link do artykułu na stronie ministerstwa:
+https://www.gov.pl/web/rozwoj/ministerstwo-rozwoju-dla-edukacji-mlodziezy-w-sferze-sztucznej-inteligencji
+---
 ### Wymagane moduły:
 1. tensorflow w wersji 1.14
 2. *numpy
@@ -37,7 +53,7 @@ Przebieg obliczeń i wynik będą zapisane w pliku out.txt
 6. Należy uruchomić skrypt model_compiler.py, którego wynikiem będą plik .pb oraz `norm.npy`, w folderze `model`
 7. Uzyskany plik .pb należy skonwertować za pomocą programu Model Optimizer będącego częścią pakietu OpenVINO. Powstałe pliki należy umieścić w folderze `\models\cursor-estimation-0001\FP32`
 ---
-## Struktura programu: 
+## Struktura projektu: 
 * calibration.py - skrypt służący do kalibracji i zbierania danych treningowych. Polega na wyświetlaniu na ekranie punktów, na które użytkownik ma skierować swój wzrok oraz poruszać głową w różnych kierunkach w celu zebrania zróżnicowanych wyników. Dane te zapisywane są w formacie .npy oraz wykorzystywane są później do stworzenia modelu sieci wyznaczającej punkty.
 
 * test.py - skrypt służący do testowania pojedynczych konfiguracji sieci, aby sprawdzać poprawność modelu.
@@ -56,16 +72,6 @@ Przebieg obliczeń i wynik będą zapisane w pliku out.txt
 
 * cursor_operator.py  - ostatni finalny skrypt pythonowy reprezentujący działanie naszego programu.  
 ***
-## Schemat działania:  
-  - Wczytywanie danych z kalibracji
-  - Uczenie modeli za pomocą optymalnej sieci
-  - Pętla programu
-   + Przechwytywanie klatki z obrazu kamerki internetowej
-   + Analiza klatki przez odpowiedni skrypt i wyznaczenie wartości wejściowych sieci
-   + Wykorzystanie zwróconych punktów do sterowania myszką: 
-     - Przesuwanie kursora w segment ekranu odpowiadający punktowi, na który skierowany jest wzrok użytkownika
-     - Jeżeli segmentem oglądanym jest część górna/dolna ekranu wywoływane jest polecenie do scrollowania w górę/dół
----
 ## Źródła
 * [keras-tf-pb](https://github.com/Tony607/keras-tf-pb) by Tony607 przy zapisywaniu modelu w formacie .pb
 * [OpenVINO-Python-Utils](https://github.com/simpledevelopments/OpenVINO-Python-Utils) by simpledevelopments, z delikatnymi modyfikacjami, przy ładowaniu modeli OpenVINO
