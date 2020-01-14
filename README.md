@@ -14,11 +14,15 @@
      - Przesuwanie kursora w segment ekranu odpowiadający punktowi, na który skierowany jest wzrok użytkownika
      - Jeżeli segmentem oglądanym jest część górna/dolna ekranu wywoływane jest polecenie do scrollowania w górę/dół
 ---
-## Projekt tworzony był w ramach międzynarodowego programu Intel AI for Youth, gdzie na gali zakończeniowej w Ministerstwie Rozwoju otrzymał pierwsze miejsce.
-![gala.jpg]
+## Nagroda
+Projekt tworzony był w ramach międzynarodowego programu Intel AI for Youth. Gala rozwiązująca konkurs miała miejsce w Warszawie w Ministerstwie Rozwoju, gdzie nasz projekt otrzymał pierwsze miejsce wśród 12 innych wyróżnionych projektów.
 
-Link do artykułu na stronie ministerstwa:
+![gala.jpg](util/gala.jpg)
+
+Link do artykułu:  
 https://www.gov.pl/web/rozwoj/ministerstwo-rozwoju-dla-edukacji-mlodziezy-w-sferze-sztucznej-inteligencji
+
+
 ---
 ### Wymagane moduły:
 1. tensorflow w wersji 1.14
